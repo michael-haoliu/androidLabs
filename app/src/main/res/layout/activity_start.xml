@@ -21,8 +21,8 @@
 
     <Button
         android:id="@+id/buttonText_start"
-        android:layout_width="97dp"
-        android:layout_height="39dp"
+        android:layout_width="144dp"
+        android:layout_height="36dp"
         android:text="@string/ButtonText_startWin"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
@@ -33,6 +33,7 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintVertical_bias="0.028"
         app:layout_constraintHorizontal_bias="0.029"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_editor_absoluteY="56dp" />
 
 </android.support.constraint.ConstraintLayout>
