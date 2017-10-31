@@ -20,20 +20,19 @@
         android:id="@+id/textView" />
 
     <Button
-        android:id="@+id/buttonText_start"
+        android:id="@+id/buttonWelcome_startPage"
         android:layout_width="144dp"
         android:layout_height="36dp"
-        android:text="@string/ButtonText_startWin"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.028"
-        app:layout_constraintHorizontal_bias="0.029"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/ButtonText_startWin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteY="56dp" />
+        app:layout_constraintVertical_bias="0.028" />
 
 </android.support.constraint.ConstraintLayout>
