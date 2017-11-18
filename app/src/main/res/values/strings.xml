@@ -13,4 +13,6 @@
     <string name="dialog_title">Dialog Title</string>
     <string name="ok">Confirm</string>
     <string name="cancel">Cancel</string>
+    <string name="button_startChat">Start Chat</string>
+    <string name="button_sendChat">Send</string>
 </resources>
