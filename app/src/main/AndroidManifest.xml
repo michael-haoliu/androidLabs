@@ -23,6 +23,13 @@
         </activity>
         <activity android:name=".ListItemsActivity"></activity>
         <activity android:name=".ChatWindowActivity"></activity>
+
+        <!--<provider>-->
+            <!--android:authorities="de.vogella.android.todos.contentprovider"-->
+            <!--android:name=".contentprovider.MyTodoContentProvider" >-->
+        <!--</provider>-->
+
     </application>
+
 
 </manifest>
