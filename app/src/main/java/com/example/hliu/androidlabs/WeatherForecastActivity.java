@@ -176,20 +176,23 @@ public class WeatherForecastActivity extends Activity {
             InputStream inputStream=null;
             try{
                 URL url = new URL(url_str);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                HttpURLConnection connection = (HttpURLConnection)url.openConnection();
                 connection.setReadTimeout(10000);
                 connection.setConnectTimeout(15000);
                 connection.setRequestMethod("GET");
                 connection.setDoInput(true);
                 //start query
                 connection.connect();
+
+                Log.i(Tag, "weather : open url  " + url_str);
                 inputStream = connection.getInputStream();
+
             }catch(Exception e){
                 //MalformedURLException
                 // IO
                 //IllegalStateException
                 e.printStackTrace();
-                Log.i(Tag, "weather error: can not open url");
+                Log.i(Tag, "weather error: can not open url  " + url_str);
             }
             return inputStream;
         }
