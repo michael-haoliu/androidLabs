@@ -35,7 +35,7 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper{
         super(context, DATABASE_NAME, null, VERSION_NUM);
     }
 
-    @Override // create database if not exists
+    @Override // create database if not exists a
     public void onCreate(SQLiteDatabase db){
         db.execSQL(STR_createTable);
         Log.i(TAG_SQL, "Calling onCreate SQLhelper");
