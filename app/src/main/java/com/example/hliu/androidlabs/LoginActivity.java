@@ -8,63 +8,43 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.EditText;
 
-public class StartActivity extends Activity {
+public class LoginActivity extends Activity {
 
-    private static final String TAG = StartActivity.class.getSimpleName();
-    private Button button, button_chat;
+    private static final String TAG = LoginActivity.class.getSimpleName();
+    private Button button_login;
 
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        switch (requestCode) {
-            case 10:
-                Log.i(TAG, "Returned to StartActivity.onActivityResult");
-                break;
-        }
-
-        switch (resultCode) {
-            case Activity.RESULT_OK:
-                String messagePassed = data.getStringExtra("Response");
-                Toast.makeText(this, messagePassed, Toast.LENGTH_LONG).show();
-                break;
-        }
-
-    }
-
+    private EditText edit_email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_login);
         Log.i(TAG, "In onCreate");
 
-        button = findViewById(R.id.button_startPage);
-        button_chat = findViewById(R.id.button_startChart_startPage);
+        button_login = findViewById(R.id.button_login);
+
+        edit_email = findViewById(R.id.userName);
         SharedPreferences sharedPreferences = getSharedPreferences("User info", Context.MODE_PRIVATE);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        String email_user = sharedPreferences.getString("email_info","");
+        edit_email.setText(email_user);
+
+        button_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this, ListItemActivity.class);
-                startActivityForResult(intent, 10);
+                SharedPreferences sharedPref = getSharedPreferences("User info", Context.MODE_PRIVATE);
 
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("email_info", edit_email.getText().toString());
+                editor.apply();
+
+                Intent intent = new Intent(LoginActivity.this, StartActivity.class);
+                startActivity(intent);
             }
         });
 
-        button_chat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this, ChatWindow.class);
-                startActivityForResult(intent, 10);
-
-            }
-        });
     }
-
 
 
     /**
@@ -90,8 +70,6 @@ public class StartActivity extends Activity {
 //    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
 //        super.onCreate(savedInstanceState, persistentState);
 //    }
-
-
 
     /**
      * Called after {@link #onCreate} &mdash; or after {@link #onRestart} when
@@ -234,6 +212,5 @@ public class StartActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "In onDestroy");
-
     }
 }

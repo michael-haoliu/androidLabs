@@ -1,71 +1,97 @@
 package com.example.hliu.androidlabs;
 
 import android.app.Activity;
-import android.content.Context;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
-public class StartActivity extends Activity {
+import static android.R.attr.data;
 
-    private static final String TAG = StartActivity.class.getSimpleName();
-    private Button button, button_chat;
+public class ListItemActivity extends Activity {
+    private static final String TAG = LoginActivity.class.getSimpleName();
 
 
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private ImageButton button_camera;
+    private Switch switchs;
+    private CheckBox checkBox;
 
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        switch (requestCode) {
-            case 10:
-                Log.i(TAG, "Returned to StartActivity.onActivityResult");
-                break;
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            button_camera.setImageBitmap(photo);
         }
-
-        switch (resultCode) {
-            case Activity.RESULT_OK:
-                String messagePassed = data.getStringExtra("Response");
-                Toast.makeText(this, messagePassed, Toast.LENGTH_LONG).show();
-                break;
-        }
-
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_list_item);
         Log.i(TAG, "In onCreate");
 
-        button = findViewById(R.id.button_startPage);
-        button_chat = findViewById(R.id.button_startChart_startPage);
-        SharedPreferences sharedPreferences = getSharedPreferences("User info", Context.MODE_PRIVATE);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        button_camera = findViewById(R.id.listItem_imagButton);
+        switchs = findViewById(R.id.listItem_switch);
+        checkBox = findViewById(R.id.listItem_checkBox);
+
+        button_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this, ListItemActivity.class);
-                startActivityForResult(intent, 10);
-
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                }
             }
         });
 
-        button_chat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this, ChatWindow.class);
-                startActivityForResult(intent, 10);
 
+
+        switchs.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                Toast.makeText(getApplicationContext(), isChecked ? "Switch On" : "Switch Off", Toast.LENGTH_LONG).show();
             }
         });
+
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(ListItemActivity.this);
+                    builder.setMessage(R.string.dialog_message);
+                    builder.setTitle(R.string.dialog_title)
+                            .setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Intent resultIntent = new Intent();
+                                    resultIntent.putExtra("Response", "Here is my response");
+                                    setResult(Activity.RESULT_OK, resultIntent);
+                                    finish();
+                                }
+                            })
+                            .setNegativeButton("CANCLE", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //do nothing
+                                }
+                            })
+                            .show();
+
+                }
+            }
+        });
+
+
     }
-
-
 
     /**
      * Same as {@link #onCreate(Bundle)} but called for those activities created with
@@ -90,8 +116,6 @@ public class StartActivity extends Activity {
 //    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
 //        super.onCreate(savedInstanceState, persistentState);
 //    }
-
-
 
     /**
      * Called after {@link #onCreate} &mdash; or after {@link #onRestart} when
@@ -234,6 +258,5 @@ public class StartActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "In onDestroy");
-
     }
 }

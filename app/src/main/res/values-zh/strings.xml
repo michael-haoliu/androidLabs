@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello_world"> 你好！！！</string>
+
+    <string name="ButtonText">我是一个按钮</string>
+
+
+    <string name="loginText">登录</string>
+    <string name="passWordText">密码</string>
+
+    <!--<string name="LoginName">登录名</string>-->
+    <string name="loginName">登录名</string>
+
+    <string name="hintLoginName">输入登录名</string>
+
+    <string name="hintPassWord">输入密码</string>
+
+    <string name="radioButton"> 单选按钮</string>
+    <string name="checkBox">复选框</string>
+    <string name="switchbox">这是做什么的？</string>
+
+    <string name="button_login">现在登录</string>
+
+    <string name="dialog_message">是否要退出？</string>
+
+    <string name="dialog_title"> 对话 </string>
+
+
+
+    <string name="dialog_ok">好</string>
+
+
+
+</resources>
