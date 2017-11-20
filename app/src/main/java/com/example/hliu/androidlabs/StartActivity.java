@@ -11,6 +11,7 @@ import android.widget.Toast;
 public class StartActivity extends Activity {
     private Button button;
     private Button buttonChat;
+    private Button button_weather;
     private static final int REQUEST_CODE =10;
 
     protected static final String ACTIVITY_NAME = StartActivity.class.getSimpleName();
@@ -20,6 +21,7 @@ public class StartActivity extends Activity {
         setContentView(R.layout.activity_start);
         Log.i(ACTIVITY_NAME,"In onCreate");
 
+        //----------------------
         button = findViewById(R.id.buttonWelcome_startPage);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,14 +30,23 @@ public class StartActivity extends Activity {
                 startActivityForResult(intent, REQUEST_CODE);
             }
         });
+
+        //-----------------
         buttonChat = findViewById(R.id.button_startChat);
         buttonChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StartActivity.this, ChatWindow.class);
                 startActivity(intent);
-
-
+            }
+        });
+        //------------
+        button_weather = findViewById(R.id.button_WeatherForcast);
+        button_weather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StartActivity.this, WeatherForecastActivity.class);
+                startActivity(intent);
             }
         });
 

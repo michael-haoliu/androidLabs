@@ -15,4 +15,8 @@
     <string name="cancel">Cancel</string>
     <string name="button_startChat">Start Chat</string>
     <string name="button_sendChat">Send</string>
+    <string name="string_currentTemp">Current temperature</string>
+    <string name="string_minTemp">Min temeperature</string>
+    <string name="string_maxTemp">Max temperature</string>
+    <string name="string_progressBar">ProgressBar</string>
 </resources>
