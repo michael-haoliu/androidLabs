@@ -69,9 +69,9 @@ public class ChatWindow extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_window);
 
-        button_send = findViewById(R.id.button_send_chart);
-        editText_msg = findViewById(R.id.editText_chart);
-        listView_chat = findViewById(R.id.listView_chart);
+        button_send = findViewById(R.id.button_sentChat);
+        editText_msg = findViewById(R.id.chatMsg);
+        listView_chat = findViewById(R.id.listView_chatWin);
         messageList = new ArrayList<>();
 
 

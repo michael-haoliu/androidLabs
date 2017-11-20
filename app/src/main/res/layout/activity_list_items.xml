@@ -11,7 +11,7 @@
     android:gravity="fill"
     android:rowCount="2"
 
-    tools:context="com.example.hliu.myandroidlabs.ListItemsActivity">
+    tools:context="com.example.hliu.androidlabs.ListItemActivity">
 
     <RadioButton
         android:id="@+id/radioButtonID_ListItems"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.hliu.myandroidlabs">
+    package="com.example.hliu.androidlabs">
 
     <uses-feature
         android:name="android.hardware.camera2"
@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".StartActivity"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -21,8 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListItemsActivity"></activity>
-        <activity android:name=".ChatWindowActivity"></activity>
+
+        <activity android:name=".ListItemActivity"></activity>
+        <activity android:name=".ChatWindow"></activity>
 
         <!--<provider>-->
             <!--android:authorities="de.vogella.android.todos.contentprovider"-->

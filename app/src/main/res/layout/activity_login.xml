@@ -10,7 +10,7 @@
 
     android:orientation="vertical"
 
-    tools:context="com.example.hliu.myandroidlabs.LoginActivity">
+    tools:context="com.example.hliu.androidlabs.LoginActivity">
 
     <TextView
         android:id="@+id/logIn_String"

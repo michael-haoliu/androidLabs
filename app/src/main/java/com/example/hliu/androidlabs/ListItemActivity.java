@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -15,8 +14,6 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.Toast;
-
-import static android.R.attr.data;
 
 public class ListItemActivity extends Activity {
     private static final String TAG = LoginActivity.class.getSimpleName();
@@ -37,13 +34,13 @@ public class ListItemActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_item);
+        setContentView(R.layout.activity_list_items);
         Log.i(TAG, "In onCreate");
 
 
-        button_camera = findViewById(R.id.listItem_imagButton);
-        switchs = findViewById(R.id.listItem_switch);
-        checkBox = findViewById(R.id.listItem_checkBox);
+        button_camera = findViewById(R.id.imageButtonID_listItem);
+        switchs = findViewById(R.id.switchID_listItem);
+        checkBox = findViewById(R.id.checkBoxID_ListItem);
 
         button_camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +68,7 @@ public class ListItemActivity extends Activity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(ListItemActivity.this);
                     builder.setMessage(R.string.dialog_message);
                     builder.setTitle(R.string.dialog_title)
-                            .setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+                            .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     Intent resultIntent = new Intent();
                                     resultIntent.putExtra("Response", "Here is my response");
