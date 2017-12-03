@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -105,18 +106,23 @@ public class WeatherForecastActivity extends Activity {
                 // This call resets the parser state and sets the event type to the initial value START_DOCUMENT
                 xmlPullParser.setInput(inputStream,"UTF-8");
                 while(xmlPullParser.next() != XmlPullParser.END_DOCUMENT){
+                    SystemClock.sleep(200);
+
                     if(xmlPullParser.getEventType() != XmlPullParser.START_TAG){
                         continue;
                     }
                     if(xmlPullParser.getName().equalsIgnoreCase(TempTag)){
                         curTemp_str = xmlPullParser.getAttributeValue(null, TempAttr_value);
                         publishProgress(25);
+                        SystemClock.sleep(200);
 
                         minTemp_str = xmlPullParser.getAttributeValue(null, TempAttr_min);
                         publishProgress(50);
 
                         maxTemp_str = xmlPullParser.getAttributeValue(null, TempAttr_max);
                         publishProgress(75);
+
+                        SystemClock.sleep(200);
                     }
 
                     //------------
@@ -156,6 +162,8 @@ public class WeatherForecastActivity extends Activity {
                                 Log.i(Tag, "weather  Image not exists and loaded from URL");
 
                                 publishProgress(100);
+
+                                SystemClock.sleep(200);
 
                             }else{
                                 Log.i(Tag, "weather error  Image not exists and can not be loaded url - Null");

@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -32,6 +33,12 @@ public class ChatWindow extends Activity {
     private final static String TAG_chatWindow = ChatWindow.class.getSimpleName();
 
     private boolean toListFromTop =true;
+
+
+    //---------lab7
+    private FrameLayout frameLayout_chat;
+    private boolean isFrameLayExist;
+
     //--------inner classs
     class ChartAdapter extends ArrayAdapter<String> {
 
@@ -64,10 +71,14 @@ public class ChatWindow extends Activity {
         }
     }
 
+    //--------------outter class
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        frameLayout_chat = findViewById(R.id.framelayout_chat);
+        isFrameLayExist = frameLayout_chat != null;
         setContentView(R.layout.activity_chat_window);
+
 
         button_send = findViewById(R.id.button_sentChat);
         editText_msg = findViewById(R.id.chatMsg);
