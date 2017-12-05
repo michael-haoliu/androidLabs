@@ -94,7 +94,6 @@ public class MessageFragment extends Fragment {
         });
     }// on create
 
-
     //--------interface  Lab 7
 //    private OnItemSelectedListener onItemSelectedListener;
 
