@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 //import static android.content.ContentValues.TAG;
 
-public class ChatWindow extends Activity implements MessageFragment.OnItemSelectedListener{
+public class ChatWindow extends Activity implements MessageFragment.OnItemSelectedListener {
 
     private Button button_send;
     private EditText editText_msg;
@@ -107,6 +107,27 @@ public class ChatWindow extends Activity implements MessageFragment.OnItemSelect
         frameLayout_chat = findViewById(R.id.framelayout_layoutChat);
         //If it returns null, then it wasn’t loaded and you are using the phone layout
         isPhoneMode = frameLayout_chat == null;
+
+
+/*        if(savedInstanceState != null){
+
+            Fragment fragment1 = getFragmentManager().findFragmentById(R.id.framelayout_layoutChat);
+            Fragment fragment2 = getFragmentManager().findFragmentById(R.id.framelayout_layout1);
+
+            if(fragment1 != null){
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.remove(fragment1);
+                fragmentTransaction.commit();
+            }
+
+            if(fragment2 != null){
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.remove(fragment2);
+                fragmentTransaction.commit();
+            }
+            setContentView(R.layout.activity_chat_window);
+
+        }*/
 
 
         //-------lab 5
@@ -288,8 +309,46 @@ public class ChatWindow extends Activity implements MessageFragment.OnItemSelect
 
     }
 
+/*    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
 
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Fragment fragment1 = getFragmentManager().findFragmentById(R.id.framelayout_layoutChat);
 
+            if(fragment1 != null){
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.remove(fragment1);
+                fragmentTransaction.commit();
+            }
+        }else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//            mGridViewPortrait.setVisibility(View.GONE);
+//            mGridViewLandscape.setVisibility(View.VISIBLE);
 
+            Fragment fragment2 = getFragmentManager().findFragmentById(R.id.framelayout_layout1);
+            if(fragment2 != null){
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.remove(fragment2);
+                fragmentTransaction.commit();
+            }
+
+        }
+
+    }*/
 
 }
+
+
+
+
+/*    protected void onCreate(Bundle savedInstanceState) {
+        switch (getResources().getConfiguration().orientation) {
+            case Configuration.ORIENTATION_PORTRAIT:
+                setContentView(R.layout.aportrait);
+                break;
+            case Configuration.ORIENTATION_LANDSCAPE:
+                setContentView(R.layout.alandscape);
+                break;
+        }
+
+/////..............
+    }*/
