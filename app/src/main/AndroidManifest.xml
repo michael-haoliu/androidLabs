@@ -32,7 +32,7 @@
         <!-- </provider> -->
 
         <activity android:name=".WeatherForecastActivity" />
-        <activity android:name=".MessageDetailsActivity"></activity>
+        <activity android:name=".MessageDetailsActivity" />
     </application>
 
 </manifest>
