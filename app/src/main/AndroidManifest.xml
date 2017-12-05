@@ -6,7 +6,7 @@
         android:name="android.hardware.camera2"
         android:required="true" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -31,7 +31,8 @@
         <!-- android:name=".contentprovider.MyTodoContentProvider" > -->
         <!-- </provider> -->
 
-        <activity android:name=".WeatherForecastActivity"></activity>
+        <activity android:name=".WeatherForecastActivity" />
+        <activity android:name=".MessageDetailsActivity"></activity>
     </application>
 
 </manifest>

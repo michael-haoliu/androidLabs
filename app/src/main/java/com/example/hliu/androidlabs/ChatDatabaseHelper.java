@@ -93,6 +93,21 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper{
     public void deleteEntry_mydb_LastEntry() {
         myDatabase.execSQL("DELETE FROM " + Str_TABLE + " WHERE " + Str_ID_COL + " = (SELECT MAX(" + Str_ID_COL + ") FROM " + Str_TABLE + ")");
     }
+
+    public void deleteEntry_mydb_IDNum(long idNum) {
+        try{
+            String sDel = "DELETE FROM " + Str_TABLE + " WHERE " + Str_ID_COL + " = " + idNum +";";
+
+            myDatabase.execSQL(sDel );
+
+            Log.i(TAG_SQL, "database delete command is " + sDel);
+
+        }catch (Exception e){
+            Log.i(TAG_SQL, "database delete idNum is exception charDatabaseHelper" + idNum);
+        }
+
+    }
+
     // get the table name to pass the name of the table
     public String getTableName(){
         return Str_TABLE;
@@ -102,4 +117,7 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper{
         return Str_MESSAGE_COL;
     }
 
+    public static String getStr_ID_COL() {
+        return Str_ID_COL;
+    }
 }
